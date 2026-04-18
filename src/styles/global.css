@@ -8,8 +8,8 @@
 :root {
   --font-sans: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Cascadia Code", monospace;
-  --swift-orange: #FA7343;
-  --swift-orange-dark: #e05a2b;
+  --ilang-orange: #FA7343;
+  --ilang-orange-dark: #e05a2b;
   --bg-dark: #1a1a1a;
   --bg-darker: #111111;
   --bg-hero-start: #1a1a2e;
