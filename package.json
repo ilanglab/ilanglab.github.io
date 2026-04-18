@@ -7,11 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "build:gh": "astro build",
-    "deploy:cf": "wrangler pages deploy dist"
+    "cf:project:create": "wrangler pages project create ilanglab",
+    "deploy:cf": "npm run build && wrangler pages deploy dist --project-name=ilanglab"
   },
   "dependencies": {
-    "astro": "^4.15.0",
-    "@astrojs/cloudflare": "^11.0.0"
+    "astro": "^4.15.0"
   },
   "devDependencies": {
     "wrangler": "^3.0.0"
