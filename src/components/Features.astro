@@ -1,0 +1,174 @@
+---
+// src/components/Features.astro
+
+const features = [
+  {
+    title: "Fast",
+    tagline: "Build with speed and performance.",
+    desc: "Swift meets the most performance-critical needs, while allowing your code to remain expressive and approachable. Swift compiles directly to native code and provides predictable memory management.",
+    code: `<span class="cm">// Vectorized check — utf8 buffer is all ASCII</span>
+<span class="kw">func</span> <span class="fn">isASCII</span>(utf8: <span class="fn">Span</span>&lt;SIMD16&lt;UInt8&gt;&gt;) -&gt; <span class="fn">Bool</span> {
+  utf8.indices.<span class="fn">reduce</span>(into: SIMD16()) {
+    $0 |= utf8[$1]
+  }
+  .<span class="fn">max</span>() &lt; <span class="num">0x80</span>
+}`,
+  },
+  {
+    title: "Expressive",
+    tagline: "Concise code. Powerful results.",
+    desc: "Swift empowers you to write advanced code in a concise, readable syntax that even a beginner can understand. It supports object-oriented, functional, and generic programming patterns with progressive disclosure.",
+    code: `<span class="kw">import</span> ArgumentParser
+
+<span class="cm">// Complete CLI tool implementation</span>
+<span class="kw">@main struct</span> <span class="fn">Describe</span>: <span class="fn">ParsableCommand</span> {
+  <span class="kw">@Argument</span>(help: <span class="str">"Values to describe."</span>)
+  <span class="kw">var</span> values: [Double] = []
+
+  <span class="kw">mutating func</span> <span class="fn">run</span>() {
+    values.<span class="fn">sort</span>()
+    <span class="kw">let</span> total = values.<span class="fn">reduce</span>(<span class="num">0</span>, +)
+    <span class="fn">print</span>(<span class="str">"Total: \\(total)"</span>)
+  }
+}`,
+  },
+  {
+    title: "Safe",
+    tagline: "Protect memory safety.",
+    desc: "Swift prioritizes safety and eliminates entire classes of bugs and vulnerabilities by design. Memory safety and data race safety are core features of the language, required at compile time.",
+    code: `<span class="kw">let</span> transform = <span class="fn">Affine2DTransformBuilder</span>()
+    .<span class="fn">translate</span>([<span class="num">10.0</span>, <span class="num">20.0</span>].span)
+    .<span class="fn">rotate</span>(<span class="num">30.0</span>)
+    .<span class="fn">build</span>()
+
+<span class="kw">let</span> v = [<span class="num">11.0</span>, <span class="num">22.0</span>, <span class="num">1.0</span>]
+<span class="cm">// Call C functions safely with Swift types</span>
+<span class="kw">let</span> u = <span class="fn">mat_vec_mul</span>(
+  transform, rowCount, colCount,
+  v.span, allocator)`,
+  },
+  {
+    title: "Interoperable",
+    tagline: "Adopt Swift in existing code incrementally.",
+    desc: "Swift provides unmatched interoperability, natively understanding C and C++ types without foreign function interfaces, and offering bridging for bi-directional access.",
+    code: `<span class="kw">import</span> CxxStdlib
+
+<span class="cm">// Use C++ types like std::string directly</span>
+<span class="kw">let</span> beverages: [std.string] = [
+  <span class="str">"apple juice"</span>,
+  <span class="str">"grape juice"</span>,
+  <span class="str">"green tea"</span>
+]
+
+<span class="kw">let</span> juices = beverages.<span class="fn">filter</span> { s <span class="kw">in</span>
+  s.<span class="fn">find</span>(.<span class="fn">init</span>(<span class="str">"juice"</span>)) != std.string.npos
+}`,
+  },
+  {
+    title: "Adaptable",
+    tagline: "From microcontrollers to servers.",
+    desc: "Spanning from embedded and kernel to server and apps, Swift excels no matter where it's used — from constrained firmware environments to cloud services handling billions of requests a day.",
+    code: `<span class="cm">// Configure UART via Swift MMIO</span>
+<span class="cm">// Compiles to optimal assembly, zero overhead</span>
+
+usart1.brr.<span class="fn">modify</span> { rw <span class="kw">in</span>
+  rw.raw.brr_field = <span class="num">16_000_000</span> / <span class="num">115_200</span>
+}
+
+usart1.cr1.<span class="fn">modify</span> { rw <span class="kw">in</span>
+  rw.ue = .Enabled
+  rw.re = .Enabled
+  rw.te = .Enabled
+}`,
+  },
+];
+---
+
+<section class="features">
+  {
+    features.map((f) => (
+      <div class="feature-block">
+        <div class="feature-text">
+          <h2>{f.title}</h2>
+          <p class="tagline">{f.tagline}</p>
+          <p>{f.desc}</p>
+        </div>
+        <div class="code-block">
+          <pre set:html={f.code} />
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .features {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+  }
+
+  .feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 3rem 0;
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+
+  .feature-block:last-child {
+    border-bottom: none;
+  }
+
+  .feature-text h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+
+  .feature-text .tagline {
+    font-size: 14px;
+    color: #FA7343;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .feature-text p:not(.tagline) {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+    overflow: hidden;
+  }
+
+  .code-block pre {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #cdd6f4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  /* syntax colors — set:html renders these spans */
+  :global(.code-block .kw)  { color: #cba6f7; }
+  :global(.code-block .fn)  { color: #89b4fa; }
+  :global(.code-block .str) { color: #a6e3a1; }
+  :global(.code-block .cm)  { color: #6c7086; }
+  :global(.code-block .num) { color: #fab387; }
+
+  @media (max-width: 700px) {
+    .feature-block {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

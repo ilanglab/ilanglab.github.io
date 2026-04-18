@@ -1,0 +1,56 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero">
+  <h1>Swift is the powerful, flexible,<br />multiplatform programming language.</h1>
+  <p class="hero-sub">FAST. EXPRESSIVE. SAFE.</p>
+  <a class="hero-btn" href="https://www.swift.org/install/">Install</a>
+  <p class="hero-note">Tools for Linux, macOS, and Windows</p>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .hero-sub {
+    color: #FA7343;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: 3px;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: #FA7343;
+    color: #fff;
+    padding: 12px 36px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .hero-btn:hover {
+    background: #e05a2b;
+    transform: translateY(-1px);
+  }
+
+  .hero-note {
+    color: #888;
+    font-size: 13px;
+  }
+</style>

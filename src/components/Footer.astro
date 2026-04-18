@@ -1,0 +1,187 @@
+---
+// src/components/Footer.astro
+
+const toolLinks = [
+  { label: "Xcode", href: "https://developer.apple.com/xcode/" },
+  { label: "Visual Studio Code", href: "https://www.swift.org/documentation/articles/getting-started-with-vscode-swift.html" },
+  { label: "Neovim", href: "https://www.swift.org/documentation/articles/zero-to-swift-nvim.html" },
+  { label: "Cursor", href: "https://www.swift.org/documentation/articles/getting-started-with-cursor-swift.html" },
+  { label: "Other Editors", href: "https://github.com/swiftlang/sourcekit-lsp" },
+];
+
+const communityLinks = [
+  { label: "Overview", href: "https://www.swift.org/community/" },
+  { label: "Swift Evolution", href: "https://www.swift.org/swift-evolution/" },
+  { label: "Diversity", href: "https://www.swift.org/diversity/" },
+  { label: "Mentorship", href: "https://www.swift.org/mentorship/" },
+  { label: "Contributing", href: "https://www.swift.org/contributing/" },
+];
+
+const govLinks = [
+  { label: "Code of Conduct", href: "https://www.swift.org/code-of-conduct/" },
+  { label: "License", href: "https://www.swift.org/legal/license.html" },
+  { label: "Security", href: "https://www.swift.org/support/security.html" },
+];
+---
+
+<!-- Open Source -->
+<section class="open-source">
+  <h2>Open Source</h2>
+  <p>Contribute and get involved.</p>
+  <div class="os-links">
+    <a class="os-link" href="https://github.com/swiftlang">View SwiftLang on GitHub</a>
+    <a class="os-link" href="https://forums.swift.org">Join the forums</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          {toolLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          {communityLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h4>Governance</h4>
+        <ul>
+          {govLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 Apple Inc. All rights reserved.</p>
+      <p>Swift and the Swift logo are trademarks of Apple Inc.</p>
+      <div class="footer-legal">
+        <a href="https://www.apple.com/privacy/privacy-policy/">Privacy Policy</a>
+        <span>·</span>
+        <a href="https://www.apple.com/legal/privacy/en-ww/cookies/">Cookies</a>
+        <span>·</span>
+        <a href="https://www.swift.org/openapi">API</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* --- Open Source --- */
+  .open-source {
+    background: #1a1a2e;
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+
+  .open-source h2 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .open-source > p {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+  }
+
+  .os-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .os-link {
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .os-link:hover {
+    border-color: #FA7343;
+    color: #FA7343;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    background: #111;
+    padding: 3rem 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer h4 {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer ul a {
+    color: #777;
+    font-size: 13px;
+    transition: color 0.15s;
+  }
+
+  .footer ul a:hover { color: #FA7343; }
+
+  .footer-bottom {
+    border-top: 0.5px solid #2a2a2a;
+    padding-top: 1.5rem;
+    color: #444;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .footer-legal {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-legal a {
+    color: #555;
+    transition: color 0.15s;
+  }
+
+  .footer-legal a:hover { color: #FA7343; }
+  .footer-legal span { color: #333; }
+
+  @media (max-width: 640px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

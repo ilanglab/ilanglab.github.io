@@ -1,0 +1,31 @@
+---
+// src/layouts/BaseLayout.astro
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Swift - The powerful, flexible, multiplatform programming language",
+  description = "Swift is a powerful and intuitive programming language for all Apple platforms, Linux, and Windows.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FA7343" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>
